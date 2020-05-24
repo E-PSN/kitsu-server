@@ -120,4 +120,12 @@ class Types::Profile < Types::BaseObject
   def library
     object
   end
+
+  field :media_reactions, Types::MediaReaction.connection_type,
+    null: false,
+    description: 'Media reactions written by this user.'
+
+  def media_reactions
+    AssociationLoader.for(object.class, :media_reactions).load(object)
+  end
 end
