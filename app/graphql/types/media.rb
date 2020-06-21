@@ -152,6 +152,6 @@ module Types::Media
     description: 'A list of reactions for this media'
 
   def reactions
-    AssociationLoader.for(object.class, :media_reactions).load(object)
+    AssociationLoader.for(object.class, :media_reactions).scope(object)
   end
 end
